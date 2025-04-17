@@ -6,6 +6,10 @@ app = FastAPI()
 
 BINANCE_URL = "https://www.binance.com/bapi/apex/v1/public/apex/cms/article/list/query"
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
 @app.get("/binancedata")
 async def binance_data(
     type: int       = Query(..., description="article type"),
