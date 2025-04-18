@@ -1,11 +1,17 @@
+# Binance Wrapper
+
+A Python FastAPI application that serves as a proxy for Binance API requests.
+
 ## Usage
 
 Install the requirements and start the server:
 
 ```bash
 pip install -r requirements.txt
-uvicorn main:app --host 0.0.0.0 --port 8000
+python main.py
 ```
+
+The server will start on http://0.0.0.0:8000 by default.
 
 ## Endpoints
 
@@ -24,7 +30,7 @@ http://localhost:8000/binancedata?type=1&pageNo=1&pageSize=50
 ```
 
 **Response:**  
-The JSON payload returned by Binance’s API.
+The JSON payload returned by Binance's API.
 
 ---
 
@@ -45,6 +51,21 @@ http://localhost:8000/serverinfo
   "country": "Colombia",
   "city": "Bogotá"
 }
+```
+
+## Notes
+
+- The application uses a SOCKS5 proxy to route requests to Binance's API
+- Proxy configuration is stored in the `.env` file
+- Debug endpoints are available for testing the proxy connection
+
+## Debugging
+
+If you encounter issues, you can use the provided debug scripts:
+
+```bash
+python debug.py         # Test the proxy connection
+python debug_binance.py # Test the Binance API connection specifically
 ```
 
 That's all! Keep your API key safe and enjoy your proxy server.
